@@ -10,11 +10,12 @@
     </form>
     <?php 
         if( isset( $_POST['showbtn'] ) ){ 
-        $getId = $_POST['stu_id'];
-        require "db.php";    
-        $condition = array( 'sid' =>  $getId );
-        $getData = new Query;
-        $result = $getData->getData( 'student', '', '*', $condition );
+            $getId = $_POST['stu_id'];
+            require "db.php";    
+            $condition = array( 'sid' =>  $getId );
+            $getData = new Query;
+            $result = $getData->getData( 'student', '', '*', $condition );
+            if( $result ){
     ?>
     <form class="post-form" action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
         <div class="form-group">
@@ -50,7 +51,9 @@
         </div>
     <input class="submit" type="submit" value="Update" name="submit" />
     </form>
-    <?php } ?>
+    <?php } 
+        }
+    ?>
 
     <?php
         if( isset($_POST['submit'] ) ){

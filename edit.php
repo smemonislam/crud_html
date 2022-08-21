@@ -7,6 +7,7 @@
     $condition = array( 'sid' => $getId );
     $getData = new Query;
     $result  = $getData->getData( 'student', '', '*', $condition );
+    if( $result ){
 ?>
 
 <div id="main-content">
@@ -63,7 +64,12 @@
             $update->updateData( 'student', $set_condition, 'sid', $stu_id );
             header( "Location: http://localhost/Core_Project/crud_html/index.php" );
         }
-    
+    ?>
+    <?php
+        }
+        else{
+            header( "Location: http://localhost/Core_Project/crud_html/edit.php" );
+        }
     ?>
 </div>
 </div>
